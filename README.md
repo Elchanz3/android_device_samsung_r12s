@@ -1,4 +1,4 @@
-# TWRP Device Tree for the Samsung Galaxy S24 5G (Exynos)
+# TWRP Device Tree ported from S24 5G e1s for the Samsung Galaxy S24FE r12s (Exynos)
 
 ## How-to compile it:
 ```bash
@@ -8,9 +8,5 @@ make recoveryimage
 ```
 
 ## Special Thanks:
-[Hunter](https://github.com/devhunter1) for the AVB digest patch
-
-[Secondarian](https://github.com/Secondarian) for helping me get it working on this device
-
-[Physwizz](https://github.com/physwizz) for helping me about device tree
+[zr89-richter](https://github.com/zr89-richter) for base device tree
 
