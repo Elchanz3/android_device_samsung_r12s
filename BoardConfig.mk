@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/samsung/e1s
+LOCAL_PATH := device/samsung/r12s
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -37,7 +37,7 @@ TARGET_USES_VULKAN := true
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x10000000
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive bootconfig buildtime_bootconfig=enable androidboot.serialconsole=0 loop.max_part=7
+BOARD_KERNEL_CMDLINE := bootconfig buildtime_bootconfig=enable androidboot.serialconsole=0 loop.max_part=7
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x00000000
@@ -51,7 +51,7 @@ BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkboot/bootimg.mk
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB) --board "SRPWG24A005"
+BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB) --board "SRPXD17A003"
 
 # Prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -63,15 +63,19 @@ BOARD_PREBUILT_DTBOIMAGE := $(LOCAL_PATH)/prebuilt/recovery_dtbo
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 100663296
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 16777216
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 240870490112
 
 # Dynamic partition
-BOARD_SUPER_PARTITION_SIZE := 13009682432 
-BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor product odm vendor_dlkm
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 13009682432
+BOARD_SUPER_PARTITION_SIZE := 12834570240
+BOARD_SUPER_PARTITION_GROUPS := group_basic
+BOARD_GROUP_BASIC_PARTITION_LIST := system odm product vendor vendor_dlkm
+BOARD_GROUP_BASIC_SIZE := 12830375936
 
 # System as root
-BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm
+BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata oem optics postinstall prism second_stage_resources spu system_dlkm vendor_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Workaround for error copying vendor files to recovery ramdisk
@@ -95,6 +99,7 @@ TW_LOAD_VENDOR_BOOT_MODULES := true
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 # Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 RECOVERY_SDCARD_ON_DATA := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -110,13 +115,13 @@ BOARD_AVB_ENABLE := true
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_RECOVERY_ALGORITHM := NONE
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 0
-BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 0
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
 # Crypto
-PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 12
+PLATFORM_SECURITY_PATCH := 2025-03-01
+VENDOR_SECURITY_PATCH := 2025-03-01
+PLATFORM_VERSION := 14
 TW_INCLUDE_CRYPTO := false
 TW_INCLUDE_CRYPTO_FBE := false
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
@@ -124,7 +129,7 @@ BOARD_USES_METADATA_PARTITION := true
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-TW_DEVICE_VERSION := 0_archer
+TW_DEVICE_VERSION := 0_NoobExyDev
 TW_FRAMERATE := 120
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 612

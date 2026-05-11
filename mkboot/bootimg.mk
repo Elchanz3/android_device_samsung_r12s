@@ -1,4 +1,4 @@
-PATCH_AVB:=device/samsung/e1s/mkboot/avb_digest_patch.py
+PATCH_AVB:=device/samsung/r12s/mkboot/avb_digest_patch.py
 
 FLASH_IMAGE_TARGET ?= $(PRODUCT_OUT)/recovery.tar
 	

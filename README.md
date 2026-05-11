@@ -1,9 +1,9 @@
-# TWRP Device Tree ported from S24 5G e1s for the Samsung Galaxy S24FE r12s (Exynos)
+# TWRP Device Tree for Samsung Galaxy S24 FE r12s (Exynos)
 
 ## How-to compile it:
 ```bash
 . build/envsetup.sh
-lunch twrp_e1s-eng
+lunch twrp_r12s-eng
 make recoveryimage
 ```
 
